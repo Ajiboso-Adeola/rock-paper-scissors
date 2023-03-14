@@ -1,0 +1,38 @@
+@mixin gameButtonShadow($color) {
+  box-shadow: inset 0 -5px 1px $color, 0 5px 10px rgba(0, 0, 0, 0.294);
+}
+
+@mixin button($px, $btn-pry) {
+  display: block;
+  border: none;
+  padding: 0.8rem $px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: auto;
+  font-weight: 600;
+  letter-spacing: 3px;
+
+  @if $btn-pry {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: #fff;
+  } @else {
+    margin-top: 1.2rem;
+    color: var(--darkText);
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.705);
+    pointer-events: visible;
+  }
+}
+
+@mixin medium() {
+  @media (min-width: 500px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media (min-width: 1000px) {
+    @content;
+  }
+}

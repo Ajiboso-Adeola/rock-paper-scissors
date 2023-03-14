@@ -1,0 +1,345 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap");
+:root {
+  --scissorsGradient: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  --paperGradient: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  --rockGradient: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  --lizardGradient: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+  --cyan: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+  --darkText: hsl(229, 25%, 31%);
+  --scoreText: hsl(229, 64%, 46%);
+  --headerOutline: hsl(217, 16%, 45%);
+  /* Background */
+  --radialGradient: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--radialGradient) no-repeat center center fixed;
+  height: calc(100vh - 2rem);
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background-size: cover;
+}
+
+p:not(.heading p) {
+  color: #fff;
+}
+
+.container {
+  width: 90%;
+  max-width: 1220px;
+  margin: 2rem auto;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  border: 4px solid var(--headerOutline);
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 800px;
+  margin: auto;
+}
+.heading img {
+  display: block;
+  margin-right: 20px;
+}
+
+.score__display {
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 150px;
+  padding: 1rem;
+}
+.score__display > p {
+  text-transform: uppercase;
+  color: var(--scoreText);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.score__display #score {
+  font-size: 3.5rem;
+  color: var(--darkText);
+}
+
+.game {
+  position: relative;
+  margin: 4rem auto;
+  max-width: 370px;
+  height: 400px;
+  background-image: url("../images/bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 300px;
+}
+.game__paper__scissors {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+}
+.game__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 135px;
+  height: 135px;
+  cursor: pointer;
+}
+.game__button:focus {
+  box-shadow: 0 0 10px #afaffd;
+  outline: none;
+}
+.game__button--paper {
+  background: var(--paperGradient);
+  box-shadow: inset 0 -5px 1px rgba(31, 52, 142, 0.726), 0 5px 10px rgba(0, 0, 0, 0.294);
+}
+.game__button--scissors {
+  background: var(--scissorsGradient);
+  box-shadow: inset 0 -5px 1px rgba(196, 112, 3, 0.924), 0 5px 10px rgba(0, 0, 0, 0.294);
+}
+.game__button--rock {
+  background: var(--rockGradient);
+  box-shadow: inset 0 -5px 1px rgba(142, 35, 31, 0.726), 0 5px 10px rgba(0, 0, 0, 0.294);
+}
+.game__button > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: inset 0 5px 1px rgba(42, 70, 192, 0.281);
+}
+.game .rock-button {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+}
+.game__grade {
+  padding-top: 1.5rem;
+}
+.game__grade h4 {
+  text-align: center;
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.game__grade > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.play__again {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 40rem);
+  margin: auto;
+  pointer-events: none;
+}
+
+.btn-pry {
+  display: block;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: auto;
+  font-weight: 600;
+  letter-spacing: 3px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+}
+
+.btn-sec {
+  display: block;
+  border: none;
+  padding: 0.8rem 3rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: auto;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-top: 1.2rem;
+  color: var(--darkText);
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.705);
+  pointer-events: visible;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.356);
+  display: none;
+}
+.modal__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 2rem;
+}
+.modal__container > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal__container > div h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--darkText);
+  text-transform: uppercase;
+  margin: auto;
+}
+.modal-rules {
+  display: block;
+  width: 100%;
+  margin: 8rem 0;
+}
+
+.user__button,
+.computer__button {
+  position: relative;
+  cursor: auto;
+}
+
+.user__button::before,
+.computer__button::before {
+  position: absolute;
+  bottom: -2.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  width: 180px;
+}
+
+.user__button::before {
+  content: "You Picked";
+}
+
+.computer__button::before {
+  content: "The house picked";
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  color: #fff;
+}
+
+.attribution a {
+  color: #3e52a3;
+}
+
+.desktopCloseBtn {
+  display: none;
+  cursor: pointer;
+}
+
+.mobileCloseBtn {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+}
+
+.show__modal {
+  display: flex;
+}
+
+#winLoseDraw {
+  font-size: 3rem;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.winner__boxShadow {
+  box-shadow: inset 0 -5px 1px rgba(0, 0, 0, 0.205), 0 5px 10px rgba(0, 0, 0, 0.294), 0 0 0px 20px rgba(255, 255, 255, 0.02), 0 0 0px 45px rgba(255, 255, 255, 0.03), 0 0 0px 75px rgba(255, 255, 255, 0.04);
+}
+
+@media (min-width: 500px) {
+  .modal__container {
+    max-width: 420px;
+    max-height: 420px;
+    border-radius: 10px;
+  }
+  .modal__container > div h2 {
+    margin-left: 0;
+  }
+  .modal__container .mobileCloseBtn {
+    display: none;
+  }
+  .modal-rules {
+    margin: 3rem 0 0;
+  }
+  .modal .desktopCloseBtn {
+    display: block;
+    height: 100%;
+  }
+  .modal {
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width: 1000px) {
+  .user__button,
+.computer__button {
+    transform: scale(2);
+  }
+
+  .user__button::before,
+.computer__button::before {
+    position: absolute;
+    top: -5rem;
+    bottom: -2.6rem;
+    transform: scale(0.7);
+  }
+
+  .computer__button {
+    position: absolute;
+    right: 0;
+  }
+
+  .play__again {
+    position: fixed;
+    top: 24rem;
+    left: 0;
+    right: 0;
+    bottom: 15rem;
+    margin: auto;
+  }
+
+  .btn-pry {
+    margin-right: 0;
+  }
+
+  .max__width {
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,243 @@
+@use 'mixins' as *;
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  border: 4px solid var(--headerOutline);
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 800px;
+  margin: auto;
+
+  img {
+    display: block;
+    margin-right: 20px;
+  }
+}
+
+.score__display {
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 150px;
+  padding: 1rem;
+
+  > p {
+    text-transform: uppercase;
+    color: var(--scoreText);
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  #score {
+    font-size: 3.5rem;
+    color: var(--darkText);
+  }
+}
+
+.game {
+  position: relative;
+  margin: 4rem auto;
+  max-width: 370px;
+  height: 400px;
+  background-image: url('../images/bg-triangle.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 300px;
+
+  &__paper__scissors {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 135px;
+    height: 135px;
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: 0 0 10px rgb(175, 175, 253);
+      outline: none;
+    }
+
+    &--paper {
+      background: var(--paperGradient);
+      @include gameButtonShadow(hsla(229, 64%, 34%, 0.726));
+    }
+
+    &--scissors {
+      background: var(--scissorsGradient);
+      @include gameButtonShadow(hsla(34, 97%, 39%, 0.924));
+    }
+
+    &--rock {
+      background: var(--rockGradient);
+      @include gameButtonShadow(hsla(2, 64%, 34%, 0.726));
+    }
+
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: inset 0 5px 1px hsla(229, 64%, 46%, 0.281);
+    }
+  }
+
+  .rock-button {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+  }
+
+  &__grade {
+    padding-top: 1.5rem;
+    h4 {
+      text-align: center;
+      margin-top: 1.5rem;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.play__again {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 40rem);
+  margin: auto;
+  pointer-events: none;
+}
+
+.btn-pry {
+  @include button(2rem, true);
+}
+
+.btn-sec {
+  @include button(3rem, false);
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.356);
+  display: none;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 2rem;
+
+    > div {
+      > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 2rem;
+        color: var(--darkText);
+        text-transform: uppercase;
+        margin: auto;
+      }
+    }
+  }
+
+  &-rules {
+    display: block;
+    width: 100%;
+    margin: 8rem 0;
+  }
+}
+
+.user__button,
+.computer__button {
+  position: relative;
+  cursor: auto;
+}
+
+.user__button::before,
+.computer__button::before {
+  position: absolute;
+  bottom: -2.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  width: 180px;
+}
+
+.user__button::before {
+  content: 'You Picked';
+}
+.computer__button::before {
+  content: 'The house picked';
+  // display: block;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  color: #fff;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+.desktopCloseBtn {
+  display: none;
+  cursor: pointer;
+}
+
+.mobileCloseBtn {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+}
+
+.show__modal {
+  display: flex;
+}
+
+#winLoseDraw {
+  font-size: 3rem;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.winner__boxShadow {
+  box-shadow: inset 0 -5px 1px rgba(0, 0, 0, 0.205),
+    0 5px 10px rgba(0, 0, 0, 0.294), 0 0 0px 20px rgba(255, 255, 255, 0.02),
+    0 0 0px 45px rgba(255, 255, 255, 0.03),
+    0 0 0px 75px rgba(255, 255, 255, 0.04);
+}

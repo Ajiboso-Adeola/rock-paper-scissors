@@ -1,0 +1,40 @@
+@use "mixins" as *;
+
+@include desktop() {
+  .user__button,
+  .computer__button {
+    transform: scale(2);
+  }
+
+  .user__button::before,
+  .computer__button::before {
+    position: absolute;
+    top: -5rem;
+    bottom: -2.6rem;
+    transform: scale(0.7);
+  }
+
+  .computer__button {
+    position: absolute;
+    right: 0;
+  }
+
+  .play__again {
+    position: fixed;
+    top: 24rem;
+    left: 0;
+    right: 0;
+    bottom: 15rem;
+    margin: auto;
+  }
+
+  .btn-pry {
+    margin-right: 0;
+  }
+
+  .max__width {
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+  }
+}

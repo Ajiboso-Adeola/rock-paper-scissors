@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <div class="heading">
+        <img src="./images/logo.svg" alt="logo" />
+        <div class="score__display">
+          <p>Score</p>
+          <p id="score" aria-live="polite">0</p>
+        </div>
+      </div>
+
+      <div class="game">
+        <div class="game__paper__scissors">
+          <div
+            class="game__button game__button--paper"
+            role="button"
+            aria-label="paper button"
+            id="paper"
+            tabindex="1"
+          >
+            <div>
+              <img src="./images/icon-paper.svg" alt="icon-paper" />
+            </div>
+          </div>
+          <div
+            class="game__button game__button--scissors"
+            role="button"
+            aria-label="Scissors button"
+            id="scissors"
+            tabindex="2"
+          >
+            <div>
+              <img src="./images/icon-scissors.svg" alt="icon-scissors" />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="game__button game__button--rock rock-button"
+          role="button"
+          aria-label="rock button"
+          id="rock"
+          tabindex="3"
+        >
+          <div>
+            <img src="./images/icon-rock.svg" alt="icon-rock" />
+          </div>
+        </div>
+      </div>
+
+      <div class="play__again">
+        <h3 id="winLoseDraw" aria-live="polite">.</h3>
+        <button
+          id="playAgain"
+          class="btn-sec"
+          aria-label="play again"
+          tabindex="4"
+        >
+          Play Again
+        </button>
+      </div>
+
+      <button class="btn-pry" id="rules">Rules</button>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://github/Ajiboso-Adeola">Adeola Ajiboso</a>.
+    </div>
+
+    <!-- Modal for the game rules -->
+    <div class="modal" id="modal">
+      <div class="modal__container">
+        <div>
+          <div>
+            <h2>Rules</h2>
+            <img
+              class="closeBtn desktopCloseBtn"
+              src="./images/icon-close.svg"
+              alt="icon-close"
+            />
+          </div>
+          <img
+            class="modal-rules"
+            src="./images/image-rules.svg"
+            alt="image-rules"
+          />
+          <img
+            class="closeBtn mobileCloseBtn"
+            src="./images/icon-close.svg"
+            alt="icon-close"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Template for the game -->
+    <template id="gameTemplate">
+      <div class="game__grade">
+        <div>
+          <div
+            class="game__button user__button"
+            role="button"
+            aria-label="paper button"
+            id="paper"
+          >
+            <div>
+              <img src="./images/icon-paper.svg" alt="icon-paper" />
+            </div>
+          </div>
+          <div
+            class="game__button computer__button"
+            role="button"
+            aria-label="Scissors button"
+            id="scissors"
+          >
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script src="main.js"></script>
+  </body>
+</html>
