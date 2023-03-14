@@ -23,7 +23,7 @@ Users should be able to:
 
 ### Screenshot
 
-![picture 3](./design/3.png)
+![picture 3](./design/original/mobile-step-1.jpg)
 
 ### Links
 
